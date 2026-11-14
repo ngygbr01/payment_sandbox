@@ -1,0 +1,13 @@
+Ajánlott szolgáltatók: * Supabase Storage: Mivel PostgreSQL-t használsz, a Supabase a legkönnyebb választás, 
+mert az adatbázis mellé automatikusan ad egy beépített, S3-alapú fájltárolót nagyon egyszerű API-val.
+
+
+Hogyan működik a folyamat a gyakorlatban?
+
+    A megrendelő feltölti a lefordítandó szerzodes.pdf fájlt a weblapon.
+
+    A Next.js backend (vagy közvetlenül a frontend egy biztonságos linken keresztül) elküldi ezt a fájlt a felhőtárhelyre (pl. Supabase/AWS vödörbe).
+
+    A felhőtárhely elmenti a fájlt, és visszaad egy egyedi, privát linket, például: https://storage.provider.com/versalingua/jobs/job_abc123/original.pdf.
+
+    Ezt a hosszú szöveges linket (VARCHAR) mentjük el a PostgreSQL job_documents táblájába.
